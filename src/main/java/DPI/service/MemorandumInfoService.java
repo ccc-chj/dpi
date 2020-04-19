@@ -8,4 +8,6 @@ public interface MemorandumInfoService {
 
 	void insertMemorandumInfo(MemorandumInfo memorandumInfo);
 	List<MemorandumInfo> loadAllMemorandumInfo(String openid);
+	MemorandumInfo loadMemorandumInfoById(int id);
+	void udateMemorandumInfoById(MemorandumInfo memorandumInfo);
 }

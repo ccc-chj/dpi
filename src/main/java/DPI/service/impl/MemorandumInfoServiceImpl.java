@@ -26,5 +26,17 @@ public class MemorandumInfoServiceImpl implements MemorandumInfoService{
 		// TODO Auto-generated method stub
 		return memorandumInfoDao.loadAllMemorandumInfo(openid);
 	}
+
+	@Override
+	public MemorandumInfo loadMemorandumInfoById(int id) {
+		// TODO Auto-generated method stub
+		return memorandumInfoDao.loadMemorandumInfoById(id);
+	}
+
+	@Override
+	public void udateMemorandumInfoById(MemorandumInfo memorandumInfo) {
+		// TODO Auto-generated method stub
+		memorandumInfoDao.udateMemorandumInfoById(memorandumInfo);
+	}
 	
 }

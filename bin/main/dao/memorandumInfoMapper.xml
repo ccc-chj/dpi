@@ -8,4 +8,11 @@
 	<select id="loadAllMemorandumInfo" resultType="DPI.entity.MemorandumInfo" parameterType="String">
 		select * from memorandum where openid=#{openid}
 	</select>
+	
+	<select id="loadMemorandumInfoById" resultType="DPI.entity.MemorandumInfo" parameterType="Integer">
+		select * from memorandum where id=#{id}
+	</select>
+	<update id="udateMemorandumInfoById" parameterType="DPI.entity.MemorandumInfo">
+		update memorandum set date=#{date}, title=#{title}, content=#{content} where id=#{id} and openid=#{openid}
+	</update>
 </mapper>
