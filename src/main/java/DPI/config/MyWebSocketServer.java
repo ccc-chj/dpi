@@ -1,4 +1,4 @@
-package DPI.service;
+package DPI.config;
 
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -115,7 +115,7 @@ public class MyWebSocketServer {
 
 		error.printStackTrace();
 	}
-
+	
 	public void sendMessage(String message) throws IOException {
 		this.session.getBasicRemote().sendText(message);
 	}

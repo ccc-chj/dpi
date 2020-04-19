@@ -15,23 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginControler {
-	// ¶¨Òåuri
+	// ï¿½ï¿½ï¿½ï¿½uri
 	String uri = "https://api.weixin.qq.com/sns/jscode2session?";
 	
 	@RequestMapping("/weLogin")
 	public String weLogin(String code, String AppID, String AppSecret) throws IOException {
 		try {
-			// ¹¹Ôìuri
+			// ï¿½ï¿½ï¿½ï¿½uri
 			URL url = new URL(uri + "appid=" + AppID + "&secret="+ AppSecret + "&js_code=" + code + "&grant_type=authorization_code");
-			// ÊµÀý»¯Ò»¸öÁ¬½Ó
+			// Êµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			// ÉèÖÃÇëÇóµÄ±àÂë·½Ê½
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ë·½Ê½
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-			// ¹¹ÔìÒ»¸öÁ÷Êä³ö
+			// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
 			String line = null;
             StringBuilder result = new StringBuilder();
-            while ((line = br.readLine()) != null) { // ¶ÁÈ¡Êý¾Ý
+            while ((line = br.readLine()) != null) { // ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
                 result.append(line + "\n");
             }
             connection.disconnect();
@@ -47,8 +47,9 @@ public class LoginControler {
 	@RequestMapping("/setSession")
 	public String getOpenId (String openId, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		  //»ñÈ¡sessionid
+		  //ï¿½ï¿½È¡sessionid
 		session.setAttribute("openId", openId);
+		System.out.println("å·²è®¾ç½®openid");
 		return session.getId();
 	}
 	
