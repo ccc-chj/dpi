@@ -1,6 +1,8 @@
 package DPI.config;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.OnClose;
@@ -11,12 +13,21 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import DPI.dao.DoctorDao;
+import DPI.entity.Message;
+import DPI.service.MessageService;
 
 //@ServerEndpoint("/websocket/{user}")
 @ServerEndpoint(value = "/websocket/{user}/{otherUser}")
 @Component
+@Service
 public class MyWebSocketServer {
+	
+
 	//静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
 	private static int onlineCount = 0;
 	//concurrent包的线程安全Set，用来存放每个客户端对应的MyWebSocket对象。
@@ -71,6 +82,11 @@ public class MyWebSocketServer {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		Date date = new Date();
+		SimpleDateFormat matter = new SimpleDateFormat("yyyy/MM/dd");
+		Message messages = new Message(1, user, otherUser, message.replace("\"", ""), matter.format(date).toString());
+		MessageService messageService = (MessageService) SpringUtil.getBean("MessageService");
+		messageService.insertMessage(messages);
 		pushMessage(user, message, otherUser);
 	}
 	
@@ -78,7 +94,7 @@ public class MyWebSocketServer {
          * 消息推送
      *
      * @param message
-     * @param otherUser发送对象    otherUser为空则推送全部人员
+     * @param otherUser发送对象    otherUser为‘全部’则推送全部人员
      */
 	private void pushMessage(String user, String message, String otherUser) {
 		// TODO Auto-generated method stub
@@ -92,6 +108,8 @@ public class MyWebSocketServer {
 				}
 			}
         } else {
+        	// 每次私法信息时，将信息保存到数据库
+        	
         	for (MyWebSocketServer item : webSocketSet) {
         		if (otherUser.equals(item.user)) {
         			try {

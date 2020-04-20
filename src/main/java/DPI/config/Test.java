@@ -10,6 +10,8 @@ public class Test {
 		Date date = new Date();
 		SimpleDateFormat matter = new SimpleDateFormat("yyyy/MM/dd");
 		System.out.println(matter.format(date));
+		String s = "12\"\"31";
+		System.out.println(s.replace("\"", ""));
 	}
 
 }
