@@ -11,7 +11,7 @@ import DPI.entity.Sport;
 public interface SportDao {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Sport record);
+    int insertSport(Sport record);
 
     int insertSelective(Sport record);
 

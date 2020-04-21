@@ -16,14 +16,20 @@ public class SportController {
 	@Autowired
 	SportService sportService;
 	
-	@PostMapping("/updateByOpenid")
+	@PostMapping("/updateSportByOpenid")
 	public int updateByOpenid(HttpServletRequest request, @RequestBody Sport record) {
 		record.setOpenid(request.getSession().getAttribute("openId").toString());
 		return sportService.updateByOpenid(record);
 	}
 	
-	@RequestMapping("/selectByOpenid")
+	@RequestMapping("/selectSportByOpenid")
 	public Sport selectByOpenid(HttpServletRequest request, String exerciseDate) {
 		return sportService.selectByOpenid(request.getSession().getAttribute("openId").toString(), exerciseDate);
+	}
+	
+	@RequestMapping("/insertSport")
+	public int insertSport(HttpServletRequest request,@RequestBody Sport record) {
+		record.setOpenid(request.getSession().getAttribute("openId").toString());
+		return sportService.insertSport(record);
 	}
 }
