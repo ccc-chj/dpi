@@ -23,11 +23,11 @@
     delete from sport
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="DPI.entity.Sport">
-    insert into sport (id, exercise_plan, water_num, 
+  <insert id="insertSport" parameterType="DPI.entity.Sport">
+    insert into sport (exercise_plan, water_num, 
       is_finish, exercise_date, is_run,openid
       )
-    values (#{id,jdbcType=INTEGER}, #{exercisePlan,jdbcType=VARCHAR}, #{waterNum,jdbcType=INTEGER}, 
+    values (#{exercisePlan,jdbcType=VARCHAR}, #{waterNum,jdbcType=INTEGER}, 
       #{isFinish,jdbcType=TINYINT}, #{exerciseDate,jdbcType=DATE}, #{isRun,jdbcType=TINYINT},#{openid,jdbcType=VARCHAR}
       )
   </insert>
