@@ -25,4 +25,10 @@ public class MessageServiceImpl implements MessageService{
 		return messageDao.loadMessageByUser(sender, addressee);
 	}
 
+	@Override
+	public Message loadLastMessageByUser(String sender, String addressee) {
+		// TODO Auto-generated method stub
+		return messageDao.loadLastMessageByUser(sender, addressee);
+	}
+
 }

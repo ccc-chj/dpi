@@ -40,4 +40,5 @@ public class InteractionController {
 	public List<Map> loadInteractionByOpenid(HttpServletRequest request) {
 		return interactionService.loadInteractionByOpenid(request.getSession().getAttribute("openId").toString());
 	}
+	
 }

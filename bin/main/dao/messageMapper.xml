@@ -8,4 +8,14 @@
 	<select id="loadMessageByUser" parameterType="String" resultType="DPI.entity.Message">
 		select * from message where (sender=#{sender} and addressee=#{addressee}) or (sender=#{addressee} and addressee=#{sender})
 	</select>
+	
+	<select id="loadLastMessageByUser" parameterType="String" resultType="DPI.entity.Message">
+		select * from message 
+		where id= 
+				(select MAX(id) from 
+					((select * from message 
+					where (sender=#{sender} and addressee=#{addressee}) 
+					   or (sender=#{addressee} and addressee=#{sender}))) 
+					   as messageData)
+	</select>
 </mapper> 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import DPI.dao.DoctorDao;
 import DPI.dao.InteractionDao;
+import DPI.dao.MessageDao;
 import DPI.entity.Interaction;
 import DPI.service.InteractionService;
 
@@ -21,6 +22,9 @@ public class InteractionServiceImpl implements InteractionService{
 	
 	@Autowired
 	private DoctorDao doctorDao;
+	
+	@Autowired
+	private MessageDao messageDao;
 
 	@Override
 	public void insertInteraction(Interaction interaction) {
@@ -41,6 +45,7 @@ public class InteractionServiceImpl implements InteractionService{
 				map.put("interaction", item);
 				// 加入此医生
 				map.put("doctor", doctorDao.loadDoctorByOpenid(item.getDoctorOpenid()));
+				map.put("message", messageDao.loadLastMessageByUser(item.getUserOpenid(), item.getDoctorOpenid()));
 				list.add(map);
 			}
 		}

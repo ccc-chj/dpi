@@ -14,4 +14,6 @@ public interface MessageDao {
 	void insertMessage(Message message);
 	
 	List<Message> loadMessageByUser(@Param("sender") String sender,@Param("addressee") String addressee);
+	
+	Message loadLastMessageByUser(@Param("sender") String sender,@Param("addressee") String addressee);
 }

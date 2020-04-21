@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 20/04/2020 15:55:26
+ Date: 20/04/2020 22:42:49
 */
 
 SET NAMES utf8mb4;
@@ -66,14 +66,38 @@ CREATE TABLE `memorandum`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of memorandum
 -- ----------------------------
-INSERT INTO `memorandum` VALUES (1, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-19 00:00:00.000000', '测试备忘录', '这是一条设置用的备忘录');
+INSERT INTO `memorandum` VALUES (1, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-20 00:00:00.000000', '测试备忘录', '这是一条设置用的备忘录');
 INSERT INTO `memorandum` VALUES (2, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-19 00:00:00.000000', '恋爱', '今天好开心，打了一天代码');
 INSERT INTO `memorandum` VALUES (6, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-19 00:00:00.000000', '日记', '这是今天的备忘录,确实真是厉害呢\n');
 INSERT INTO `memorandum` VALUES (10, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-19 00:00:00.000000', '微信小程序', '微信小程序在对动态的数据进行setData操作时需要如下使用如：this.setData({\n          [\'memorandumList[\'+i+\']\'] : item\n        })');
+INSERT INTO `memorandum` VALUES (11, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '2020-04-20 00:00:00.000000', '今日备忘录', '踩踩踩踩踩踩');
+
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发送人',
+  `addressee` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '收信人',
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `date` date NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES (5, 'oa2H_4-pskzy10YvJo7tiPibud5I', 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '你好！', '2020-04-20');
+INSERT INTO `message` VALUES (6, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', 'oa2H_4-pskzy10YvJo7tiPibud5I', '好难过', '2020-04-20');
+INSERT INTO `message` VALUES (7, 'oa2H_4-pskzy10YvJo7tiPibud5I', 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '你也觉得吗', '2020-04-20');
+INSERT INTO `message` VALUES (8, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', 'oa2H_4-pskzy10YvJo7tiPibud5I', '对啊对啊', '2020-04-20');
+INSERT INTO `message` VALUES (9, 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', 'oa2H_4-pskzy10YvJo7tiPibud5I', '你好', '2020-04-20');
+INSERT INTO `message` VALUES (10, 'oa2H_4-pskzy10YvJo7tiPibud5I', 'oa2H_4-gO1UGaRsp0L4_VwXleyqk', '你好！', '2020-04-20');
 
 SET FOREIGN_KEY_CHECKS = 1;
