@@ -30,4 +30,13 @@ public class SportServiceImpl implements SportService {
 		return sportDao.selectByOpenid(openid, exerciseDate);
 	}
 
+	/**
+	 *增加运动记录
+	 */
+	@Override
+	public int insertSport(Sport record) {
+		// TODO Auto-generated method stub
+		return sportDao.insertSport(record);
+	}
+
 }
